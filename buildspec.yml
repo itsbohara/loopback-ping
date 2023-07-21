@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo "Starting CI/CD Pipeline"
+      - echo "Installing dependencies..."
+      - npm install
+
+  build:
+    commands:
+      - echo "Building the application..."
+      - npm run build # Replace with your build command, e.g., 'npm run build', 'npm run compile', etc.
+
+  post_build:
+    commands:
+      - echo "Running tests..."
+      - npm test # Replace with your test command, if applicable.
+
+artifacts:
+  files:
+    - 'dist/**/*' # Include all files in the 'dist' directory as artifacts.
