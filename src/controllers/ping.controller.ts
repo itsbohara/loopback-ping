@@ -5,6 +5,7 @@ import {
   get,
   response,
   ResponseObject,
+  requestBody, post,
 } from '@loopback/rest';
 
 /**
@@ -50,6 +51,18 @@ export class PingController {
       date: new Date(),
       url: this.req.url,
       headers: Object.assign({}, this.req.headers),
+    };
+  }
+
+  @post('/pong')
+  pingPong(@requestBody() body:any): object {
+    // Reply with a greeting, the current time, the url, and request headers
+    return {
+      greeting: 'Pong from LoopBack',
+      date: new Date(),
+      url: this.req.url,
+      headers: Object.assign({}, this.req.headers),
+      body
     };
   }
 }
